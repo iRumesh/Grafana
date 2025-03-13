@@ -1,0 +1,34 @@
+services:
+  grafana:
+    # image: ${GRAFANA_IMAGE:-grafana/grafana}
+    build:
+      context: ./
+    container_name: grafana_rumesh
+    restart: unless-stopped
+    env_file:
+      - 'env.grafana'
+      - '.env'
+    # if you are running as root then set it to 0
+    # else find the right id with the id -u command
+    user: '0'
+    # user: "472"
+    ports:
+      - '3000:3000'
+    # adding the mount volume point which we create earlier
+    volumes:
+    #   # sudo mkdir -p /srv/docker/grafana/data; chown 472:472 /srv/docker/grafana/data
+      - ./grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      # - ./grafana/grafana.ini:/etc/grafana/grafana.ini
+      # - '$PWD/data:/var/lib/grafana'
+      # - ./provisioning:/etc/grafana/provisioning
+    networks:
+      - internal
+
+volumes:
+  grafana_data:
+    external: true
+
+networks:
+  internal:
+    driver: bridge
