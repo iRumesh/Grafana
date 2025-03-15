@@ -1,6 +1,25 @@
 FROM ${GRAFANA_IMAGE:-grafana/grafana}
 
 USER root
+
+## copying grafana configurations
+COPY defaults.ini /etc/grafana/grafana.ini
+
+## copying grafana modified email notifications
+COPY emails/ /usr/share/grafana/public/emails/
+# COPY IIoT.json /var/lib/grafana/dashboards
+
+########### COPY DASHBOARDS ####################
+
+# ADD ./provisioning /etc/grafana/provisioning
+# COPY ./provisioning /etc/grafana/provisioning
+# COPY ./dashboards /var/lib/grafana/dashboards
+
+###########                 ####################
+
+
+# COPY IIoT.json /etc/grafana/provisioning/dashboards/IIoT.json
+
 # # Disable Login form or not
 # ENV GF_AUTH_DISABLE_LOGIN_FORM "true"
 # # Allow anonymous authentication or not
@@ -22,11 +41,11 @@ ENV GF_PANELS_DISABLE_SANITIZE_HTML=true
 ENV GF_PATHS_PROVISIONING="/etc/grafana/provisioning"
 ENV GF_PATHS_PLUGINS="/var/lib/grafana/plugins"
 
-## Copy Provisioning
-COPY --chown=grafana:root provisioning $GF_PATHS_PROVISIONING
+# ## Copy Provisioning
+# COPY --chown=grafana:root provisioning $GF_PATHS_PROVISIONING
 
 ## Set Home Dashboard
-# ENV GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/etc/grafana/provisioning/dashboards/business.json
+# ENV GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/etc/grafana/provisioning/dashboards/IIoT.json
 
 ##################################################################
 ## VISUAL

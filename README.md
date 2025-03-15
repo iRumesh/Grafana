@@ -8,9 +8,19 @@
         - [x] Background
         - [x] HTML Title
         - [x] Default Theme - Dark
+        - [x] smtp setup, mail will be sent for alert, password reset
+        - [x] Removed news, help from default dashboard (changed conf in .ini file)
+        - [x] Default Home page can be set
         - [ ] Remove Footer texts, Changelog 
-        - [ ] Remove forget your password
-         
+        - [ ] looking into forget your password at login page for viewer
+        - [ ] Customizing emails sent to user by own logos, messages
+
+
+Plugins Added (installed via docker file, ENV)
+marcusolsson-dynamictext-panel
+MQTT, marcusolsson-dynamictext-panel
+
+
  - Removing all unnecessary plugins menus
  - Configuring custom datasource
  - Loading custom dashboard
@@ -18,7 +28,10 @@
  - 
 
 ### Folder Structure
-    .                  
+    .  
+    ├── dashboards 
+    ├── emails #Directory contains email templates from grafana   
+    ├── grafana_data # docker volume                    
     ├── img             
     │   ├── .svg         
     │   ├── .png                 
@@ -26,7 +39,8 @@
     │   ├── dashboards    
     │   ├── datasources     
     │   └── plugins           
-    ├── .env                    
+    ├── .env    
+    ├── defaults.ini                  
     ├── docker-compose.yaml  
     ├── dockerfile                    
     ├── env.grafana  
