@@ -6,7 +6,6 @@ services:
     container_name: grafana_rumesh
     restart: unless-stopped
     env_file:
-      # - 'env.grafana'
       - '.env'
     # if you are running as root then set it to 0
     # else find the right id with the id -u command
@@ -20,7 +19,6 @@ services:
       - ./grafana_data:/var/lib/grafana
       - ./grafana_data/plugins:/var/lib/grafana/plugins      
       - ./provisioning:/etc/grafana/provisioning
-
       # - ./grafana/grafana.ini:/etc/grafana/grafana.ini
       # - '$PWD/data:/var/lib/grafana'
       # - ./provisioning:/etc/grafana/provisioning

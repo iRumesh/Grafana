@@ -30,8 +30,8 @@ MQTT, marcusolsson-dynamictext-panel
 ### Folder Structure
     .  
     ├── dashboards 
-    ├── emails #Directory contains email templates from grafana   
-    ├── grafana_data # docker volume                    
+    ├── emails         # Directory contains email templates from grafana   
+    ├── grafana_data   # docker volume                    
     ├── img             
     │   ├── .svg         
     │   ├── .png                 
@@ -43,6 +43,8 @@ MQTT, marcusolsson-dynamictext-panel
     ├── defaults.ini                  
     ├── docker-compose.yaml  
     ├── dockerfile                    
-    ├── env.grafana  
     ├── grafana.ini 
     └── README.md
+
+## References
+https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/

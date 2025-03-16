@@ -8,6 +8,9 @@ COPY defaults.ini /etc/grafana/grafana.ini
 ## copying grafana modified email notifications
 COPY emails/ /usr/share/grafana/public/emails/
 # COPY IIoT.json /var/lib/grafana/dashboards
+# COPY IIoT.json /etc/grafana/provisioning/dashboards/IIoT.json
+# ## Copy Provisioning
+# COPY --chown=grafana:root provisioning $GF_PATHS_PROVISIONING
 
 ########### COPY DASHBOARDS ####################
 
@@ -17,39 +20,11 @@ COPY emails/ /usr/share/grafana/public/emails/
 
 ###########                 ####################
 
-
-# COPY IIoT.json /etc/grafana/provisioning/dashboards/IIoT.json
-
-# # Disable Login form or not
-# ENV GF_AUTH_DISABLE_LOGIN_FORM "true"
-# # Allow anonymous authentication or not
-# ENV GF_AUTH_ANONYMOUS_ENABLED "true"
-# # Role of anonymous user
-# ENV GF_AUTH_ANONYMOUS_ORG_ROLE "Admin"
-# # Install plugins here our in your own config file
-# # ENV GF_INSTALL_PLUGINS="<list of plugins seperated by ,"
-
-
-##################################################################
-## Customization depends on the Grafana version
-## May work or not work for the version different from the current
-## Check GitHub file history for the previous Grafana versions
-##################################################################
-ENV GF_PANELS_DISABLE_SANITIZE_HTML=true
-
-## Paths
-ENV GF_PATHS_PROVISIONING="/etc/grafana/provisioning"
-ENV GF_PATHS_PLUGINS="/var/lib/grafana/plugins"
-
-# ## Copy Provisioning
-# COPY --chown=grafana:root provisioning $GF_PATHS_PROVISIONING
-
 ## Set Home Dashboard
 # ENV GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/etc/grafana/provisioning/dashboards/IIoT.json
 
 ##################################################################
-## VISUAL
-## Update Image files
+## Update Favicon, Logos, Light theme, dark theme backgrounds
 ##################################################################
 
 ## Replace Favicon and Apple Touch
@@ -64,7 +39,6 @@ COPY img/background.svg /usr/share/grafana/public/img/g8_login_dark.svg
 COPY img/background1.svg /usr/share/grafana/public/img/g8_login_light.svg
 
 ##################################################################
-## HANDS-ON
 ## Update HTML, INI files
 ##################################################################
 
@@ -89,7 +63,6 @@ RUN sed -i 's|Loading Grafana|Loading Grafana by Rumesh|g' /usr/share/grafana/pu
 # RUN sed -i 's|\[navigation.app_sections\]|\[navigation.app_sections\]\nbusiness-app=root|g' /usr/share/grafana/conf/defaults.ini
 
 ##################################################################
-## HANDS-ON
 ## Update JavaScript files
 ##################################################################
 
