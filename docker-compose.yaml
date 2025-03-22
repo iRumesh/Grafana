@@ -3,7 +3,7 @@ services:
     # image: ${GRAFANA_IMAGE:-grafana/grafana}
     build:
       context: ./
-    container_name: grafana_rumesh
+    container_name: grafana_01
     restart: unless-stopped
     env_file:
       - '.env'

@@ -11,7 +11,7 @@
         - [x] smtp setup, mail will be sent for alert, password reset
         - [x] Removed news, help from default dashboard (changed conf in .ini file)
         - [x] Default Home page can be set
-        - [ ] Remove Footer texts, Changelog 
+        - [x] Remove Footer texts, Changelog 
         - [ ] looking into forget your password at login page for viewer
         - [ ] Customizing emails sent to user by own logos, messages
 
@@ -48,3 +48,4 @@ MQTT, marcusolsson-dynamictext-panel
 
 ## References
 https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/
+https://www.youtube.com/watch?v=ZIjUOr_HYFQ

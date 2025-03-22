@@ -38,6 +38,11 @@ COPY img/grafana_icon.svg /usr/share/grafana/public/img/grafana_icon.svg
 COPY img/background.svg /usr/share/grafana/public/img/g8_login_dark.svg
 COPY img/background1.svg /usr/share/grafana/public/img/g8_login_light.svg
 
+
+## Canvas Backgrounds, Logos (SVGs)
+COPY img/bg/* /usr/share/grafana/public/img/bg
+COPY img/icons/* /usr/share/grafana/public/img/icons/unicons
+
 ##################################################################
 ## Update HTML, INI files
 ##################################################################
@@ -76,11 +81,13 @@ RUN find /usr/share/grafana/public/build/ -name *.js \
 ## Remove Edition in the Footer
     -exec sed -i 's|({target:"_blank",id:"license",.*licenseUrl})|()|g' {} \; \
 ## Remove Version in the Footer
-    -exec sed -i 's|({target:"_blank",id:"version",text:f.versionString,url:D?"https://github.com/grafana/grafana/blob/main/CHANGELOG.md":void 0})|()|g' {} \; \
+    -exec sed -i 's|({target:"_blank",id:"version",text:..versionString,url:D?"https://github.com/grafana/grafana/blob/main/CHANGELOG.md":void 0})|()|g' {} \; \
 ## Remove News icon
     -exec sed -i 's|..createElement(....,{className:.,onClick:.,iconOnly:!0,icon:"rss","aria-label":"News"})|null|g' {} \; \
 ## Remove Open Source icon
     -exec sed -i 's|.push({target:"_blank",id:"version",text:`${..edition}${.}`,url:..licenseUrl,icon:"external-link-alt"})||g' {} \;
+
+
 
 
 # # Add provisioning
