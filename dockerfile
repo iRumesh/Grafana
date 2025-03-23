@@ -65,7 +65,7 @@ RUN sed -i 's|Loading Grafana|Loading Grafana by Rumesh|g' /usr/share/grafana/pu
 #     /usr/share/grafana/public/views/index.html
 
 # # Move Business App to navigation root section
-# RUN sed -i 's|\[navigation.app_sections\]|\[navigation.app_sections\]\nbusiness-app=root|g' /usr/share/grafana/conf/defaults.ini
+# RUN sed -i 's|\[navigation.app_sections\]|\[navigation.app_sections\]\nRumesh=root|g' /usr/share/grafana/conf/defaults.ini
 
 ##################################################################
 ## Update JavaScript files
