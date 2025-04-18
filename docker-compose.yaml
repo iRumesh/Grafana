@@ -19,11 +19,13 @@ services:
       - ./grafana_data:/var/lib/grafana
       - ./grafana_data/plugins:/var/lib/grafana/plugins      
       - ./provisioning:/etc/grafana/provisioning
+
       # - ./grafana/grafana.ini:/etc/grafana/grafana.ini
       # - '$PWD/data:/var/lib/grafana'
       # - ./provisioning:/etc/grafana/provisioning
     networks:
       - internal
+
 
 volumes:
   grafana_data:
